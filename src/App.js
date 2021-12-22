@@ -1,7 +1,9 @@
-const App = () => {
+import ItemsList from "./components/ItemsList/ItemsList";
 
+const App = () => {
   return (
-    <div></div>
-  )
-}
+    <ItemsList />
+  ) 
+};
+
 export default App;
