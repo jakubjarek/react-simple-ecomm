@@ -1,11 +1,11 @@
-import CartModal from './components/CartModal/CartModal';
+import Cart from './components/Cart/Cart';
 import ItemsList from './components/ItemsList/ItemsList';
 
 function App() {
   return (
     <>
       <ItemsList />
-      <CartModal />
+      <Cart />
     </>
   );
 }
