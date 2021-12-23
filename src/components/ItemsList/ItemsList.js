@@ -3,6 +3,8 @@ import getProducts from '../../api/getProducts';
 import Wrapper from '../Wrapper/Wrapper';
 import Item from '../Item/Item';
 
+import CartWidget from '../CartWidget/CartWidget';
+
 const ItemsList = ({ toCartHandler }) => {
   const [products, setProdutcs] = useState([]);
 
@@ -12,6 +14,7 @@ const ItemsList = ({ toCartHandler }) => {
 
   return (
     <Wrapper>
+      <div>
       <ul className="grid md:grid-cols-2 lg:grid-cols-3  gap-4 items-top">
         {products.map(({ id, title, price, image }) => (
           <Item
@@ -24,7 +27,10 @@ const ItemsList = ({ toCartHandler }) => {
           />
         ))}
       </ul>
+    <CartWidget />
+      </div>
     </Wrapper>
+    
   );
 };
 
