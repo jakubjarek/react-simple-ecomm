@@ -10,7 +10,7 @@ function CartModal({ children }) {
   });
 
   return (
-    <div className="absolute top-0 w-screen h-screen flex items-start bg-black/50 overflow-hidden">
+    <div className="absolute top-0 w-screen h-screen flex items-start justify-center bg-black/50">
       {children}
     </div>
   );

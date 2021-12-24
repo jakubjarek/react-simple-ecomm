@@ -1,9 +1,9 @@
 function Item({ id, title, price, image, clickHandler }) {
   return (
     <li
-      className="group hover:scale-105 transition-transform flex flex-col max-w-sm mb-4 cursor-pointer focus:outline-2 focus:outline-blue-500 relative"
+      className="group bg-white hover:scale-105 transition-transform flex flex-col max-w-sm mb-4 pb-2 cursor-pointer focus:outline-2 focus:outline-blue-500 relative"
       tabIndex={0}
-      onClick={() => clickHandler}
+      onClick={() => clickHandler({id, title, price, image})}
     >
       <div className="w-full h-96 mb-2">
         <img className="w-full h-full object-cover" src={image} alt="" aria-hidden="true" />

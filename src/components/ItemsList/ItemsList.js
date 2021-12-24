@@ -3,7 +3,6 @@ import getProducts from '../../api/getProducts';
 import Wrapper from '../Wrapper/Wrapper';
 import Item from '../Item/Item';
 
-import CartWidget from '../CartWidget/CartWidget';
 
 function ItemsList({ toCartHandler }) {
   const [products, setProdutcs] = useState([]);
@@ -27,7 +26,6 @@ function ItemsList({ toCartHandler }) {
             />
           ))}
         </ul>
-        <CartWidget />
       </div>
     </Wrapper>
   );
