@@ -9,18 +9,19 @@ function App() {
   const [showCart, setShowCart] = useState(false);
 
   function addToCart(itemObj) {
-    setCart((cart) => [...cart, itemObj]);
+    setCart((current) => [...current, itemObj]);
+  }
+
+  function switchCartVisibility() {
+    setShowCart((current) => !current);
   }
 
   return (
     <>
       <ItemsList toCartHandler={addToCart} />
-      {showCart && <Cart content={cart} />}
-      {cart.length && (
-        <CartWidget
-          cartLength={cart.length}
-          clickHandler={() => setShowCart((showCart) => !showCart)}
-        />
+      {showCart && <Cart content={cart} closeCartHandler={switchCartVisibility} />}
+      {cart.length && !showCart && (
+        <CartWidget cartLength={cart.length} clickHandler={() => switchCartVisibility()} />
       )}
     </>
   );
