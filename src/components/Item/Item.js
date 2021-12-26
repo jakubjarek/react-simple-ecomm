@@ -1,18 +1,22 @@
 function Item({ id, title, price, image, clickHandler }) {
   return (
     <li
-      className="group bg-white hover:scale-105 transition-transform flex flex-col max-w-sm mb-4 pb-2 cursor-pointer focus:outline-2 focus:outline-blue-500 relative"
       tabIndex={0}
-      onClick={() => clickHandler({id, title, price, image})}
+      className="group flex flex-col max-w-sm cursor-pointer overflow-hidden"
+      onClick={() => clickHandler({ id, title, price, image })}
     >
-      <div className="w-full h-96 mb-2">
-        <img className="w-full h-full object-cover" src={image} alt="" aria-hidden="true" />
-      </div>
-      <div className="flex flex-col h-36 px-2 mt-4">
-        <p className="font-semibold mb-2">{title}</p>
-        <p className="text-xl font-bold">${price}</p>
-        <div className="group-hover:bg-green-500 transition-colors w-full bg-black text-white rounded-sm font-semibold text-center mt-auto p-1">
-          Add to cart
+      <div className="pb-2 bg-white">
+        <div className="w-full h-72 mb-2">
+          <img className="w-full h-full object-cover" src={image} alt="" aria-hidden="true" />
+        </div>
+        <div className="flex flex-col px-2 mt-4">
+          <div className="mb-6">
+            <p className="mb-2 text-ellipsis overflow-hidden whitespace-nowrap">{title}</p>
+            <p className="font-bold">${price.toFixed(2)}</p>
+          </div>
+          <div className="group-hover:bg-green-500 transition-colors w-full bg-black text-white rounded-sm font-semibold text-center mt-auto p-1">
+            Add to cart
+          </div>
         </div>
       </div>
     </li>
