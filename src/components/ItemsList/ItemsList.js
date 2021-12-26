@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
-import getProducts from '../../api/getProducts';
 import Wrapper from '../Wrapper/Wrapper';
 import Item from '../Item/Item';
-
 
 function ItemsList({ toCartHandler }) {
   const [products, setProdutcs] = useState([]);
 
   useEffect(() => {
-    getProducts().then((productsList) => setProdutcs(productsList));
+    (async () => {
+      const result = await (await fetch('https://fakestoreapi.com/products/')).json();
+      setProdutcs(result);
+    })();
   }, []);
 
   return (
