@@ -28,11 +28,11 @@ function Items({ setCart }) {
   const handleAddToCart = (itemObj) => setCart((prev) => [...prev, itemObj]);
 
   const handleRemoveCategory = (category) =>
-  setCategories((current) => current.filter((cat) => cat !== category));
-  
+    setCategories((current) => current.filter((cat) => cat !== category));
+
   const filterByCategory = (items, categories) => {
     if (!categories.length) return [];
-  
+
     return items.filter(({ category }) => category.match(new RegExp(categories.join('|'))));
   };
 
@@ -66,4 +66,3 @@ function Items({ setCart }) {
 }
 
 export default Items;
-
