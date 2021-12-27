@@ -20,7 +20,7 @@ function App() {
     <>
       <ItemsList toCartHandler={addToCart} />
       {showCart && <Cart content={cart} closeCartHandler={switchCartVisibility} />}
-      {cart.length && !showCart && (
+      {cart.length > 0 && !showCart && (
         <CartWidget cartLength={cart.length} clickHandler={() => switchCartVisibility()} />
       )}
     </>
