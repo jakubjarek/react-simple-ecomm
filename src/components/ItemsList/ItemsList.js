@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import Wrapper from '../Wrapper/Wrapper';
 import Item from '../Item/Item';
 
 function ItemsList({ toCartHandler }) {
@@ -13,7 +12,7 @@ function ItemsList({ toCartHandler }) {
   }, []);
 
   return (
-    <Wrapper>
+    <div className="flex flex-col items-center bg-zinc-200">
       <div>
         <ul className="grid md:grid-cols-2 lg:grid-cols-3  gap-4 items-top">
           {products.map(({ id, title, price, image }) => (
@@ -28,7 +27,7 @@ function ItemsList({ toCartHandler }) {
           ))}
         </ul>
       </div>
-    </Wrapper>
+    </div>
   );
 }
 
