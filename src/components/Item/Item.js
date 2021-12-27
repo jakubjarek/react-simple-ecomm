@@ -1,9 +1,9 @@
-function Item({ id, title, price, image, clickHandler }) {
+function Item({ id, title, price, image, onClick }) {
   return (
     <li
       tabIndex={0}
       className="group flex flex-col max-w-sm cursor-pointer overflow-hidden"
-      onClick={() => clickHandler({ id, title, price, image })}
+      onClick={() => onClick({ id, title, price, image })}
     >
       <div className="pb-2 bg-white">
         <div className="w-full h-72 mb-2">
