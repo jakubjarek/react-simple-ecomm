@@ -1,11 +1,11 @@
 import { RiCloseFill } from 'react-icons/ri';
 
-function Category({ category, onClick }) {
+function Category({ category, onCategoryRemove }) {
   return (
     <li
-      className="flex-shrink-0 bg-white transition-colors  shadow-sm rounded-full w-fit cursor-pointer"
+      className="flex-shrink-0 bg-white shadow-sm rounded-full w-fit cursor-pointer"
       aria-label={`Remove category ${category}`}
-      onClick={() => onClick(category)}
+      onClick={() => onCategoryRemove(category)}
     >
       <div>
         <div className="flex items-center justify-center px-3 py-1">
