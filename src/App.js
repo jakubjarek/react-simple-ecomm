@@ -5,9 +5,9 @@ import CartWidget from './components/CartWidget/CartWidget';
 
 function App() {
   const [cart, setCart] = useState([]);
-  const [showCart, setShowCart] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const switchCartVisibility = () => setShowCart((prev) => !prev);
+  const switchCartVisibility = () => setIsCartOpen((prev) => !prev);
 
   const onChangeItemCount = (itemId, newCount) =>
     setCart((prev) =>
@@ -25,7 +25,7 @@ function App() {
     <>
       <ProductsContainer setCart={setCart} />
 
-      {showCart && (
+      {isCartOpen && (
         <Cart
           content={cart}
           onCloseCart={switchCartVisibility}
@@ -34,7 +34,7 @@ function App() {
         />
       )}
 
-      {cart.length > 0 && !showCart && (
+      {cart.length > 0 && !isCartOpen && (
         <CartWidget cartLength={cart.length} clickHandler={() => switchCartVisibility()} />
       )}
     </>

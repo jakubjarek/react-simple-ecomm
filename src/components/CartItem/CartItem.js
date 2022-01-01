@@ -27,7 +27,7 @@ function CartItem({ id, title, price, image, onRemoveItem, onChangeItemCount }) 
               <div className="flex items-center mb-2">
                 <select
                   className="w-10 mr-4 p-1"
-                  onChange={(e) => onQuantityChange(e)}
+                  onChange={onQuantityChange}
                   title="Change quantity"
                 >
                   <option value={1}>1</option>
