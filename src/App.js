@@ -9,29 +9,12 @@ function App() {
 
   const switchCartVisibility = () => setIsCartOpen((prev) => !prev);
 
-  const onChangeItemCount = (itemId, newCount) =>
-    setCart((prev) =>
-      prev.map((item) => {
-        if (item.id === itemId) item.count = newCount;
-        return item;
-      })
-    );
-
-  const onRemoveItem = (itemId) => {
-    setCart((prev) => prev.filter((item) => item.id !== itemId));
-  };
-
   return (
     <>
       <ProductsContainer setCart={setCart} />
 
       {isCartOpen && (
-        <Cart
-          content={cart}
-          onCloseCart={switchCartVisibility}
-          onRemoveItem={onRemoveItem}
-          onChangeItemCount={onChangeItemCount}
-        />
+        <Cart content={cart} onCloseCart={switchCartVisibility} setCart={setCart} />
       )}
 
       {cart.length > 0 && !isCartOpen && (

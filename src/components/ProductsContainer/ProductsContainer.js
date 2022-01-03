@@ -5,7 +5,7 @@ import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import ContentWrapper from '../ContentWrapper/ContentWrapper';
 import ProductList from '../ProductList/ProductList';
 
-function Items({ setCart }) {
+function ProductsContainer({ setCart }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -34,4 +34,4 @@ function Items({ setCart }) {
   );
 }
 
-export default Items;
+export default ProductsContainer;

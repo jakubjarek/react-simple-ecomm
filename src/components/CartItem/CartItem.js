@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { BsTrash } from 'react-icons/bs';
 
-function CartItem({ id, title, price, image, onRemoveItem, onChangeItemCount }) {
-  const [quantity, setQuantity] = useState(1);
+function CartItem({ id, title, price, image, count, onRemoveItem, onChangeItemCount }) {
+  const [quantity, setQuantity] = useState(count);
 
-  const onQuantityChange = (e) => {
-    setQuantity(e.target.value);
-    onChangeItemCount(id, e.target.value);
+  const onQuantityChange = ({ target: { value } }) => {
+    setQuantity(Number(value));
+    onChangeItemCount(id, Number(value));
   };
 
   return (
@@ -29,6 +29,7 @@ function CartItem({ id, title, price, image, onRemoveItem, onChangeItemCount }) 
                   className="w-10 mr-4 p-1"
                   onChange={onQuantityChange}
                   title="Change quantity"
+                  defaultValue={quantity}
                 >
                   <option value={1}>1</option>
                   <option value={2}>2</option>

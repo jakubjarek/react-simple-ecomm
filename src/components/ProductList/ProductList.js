@@ -1,11 +1,24 @@
 import Product from '../Product/Product';
 
 function ProductList({ products, categories, setCart }) {
-  const onAddToCart = (product) => setCart((prev) => [...prev, { ...product, count: 1 }]);
+  //
+  const handleClick = (product) => {
+    setCart((cartState) => {
+      for (const cartProduct of cartState) {
+        if (cartProduct.id === product.id)
+          return cartState.map((cartProduct) => ({
+            ...cartProduct,
+            count: cartProduct.count + (cartProduct.count < 5 ? 1 : 0),
+          }));
+      }
 
-  const filterByCategory = (items, categories) => {
+      return [...cartState, { ...product, count: 1 }];
+    });
+  };
+
+  const filterByCategory = (products, categories) => {
     if (!categories.length) return [];
-    return items.filter(({ category }) => category.match(new RegExp(categories.join('|'))));
+    return products.filter(({ category }) => category.match(new RegExp(categories.join('|'))));
   };
 
   return (
@@ -17,7 +30,7 @@ function ProductList({ products, categories, setCart }) {
           title={title}
           price={price}
           image={image}
-          onAddToCart={onAddToCart}
+          onClick={handleClick}
         />
       ))}
     </ul>
