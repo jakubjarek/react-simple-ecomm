@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { AiOutlineCloseSquare } from 'react-icons/ai';
+import { AiOutlineCloseSquare, AiOutlineShoppingCart } from 'react-icons/ai';
 import CartItem from '../CartItem/CartItem';
 
 function Cart({ content, onCloseCart, setCart }) {
@@ -35,20 +35,30 @@ function Cart({ content, onCloseCart, setCart }) {
           </div>
           <div>
             <div className="mt-12">
-              <ul className="pt-4">
-                {content.map(({ id, title, price, image, count }) => (
-                  <CartItem
-                    key={id}
-                    id={id}
-                    title={title}
-                    price={price}
-                    image={image}
-                    count={count}
-                    onRemoveItem={onRemoveItem}
-                    onChangeItemCount={onChangeItemCount}
-                  />
-                ))}
-              </ul>
+              {content.length === 0 ? (
+                <div className='flex flex-col items-center justify-center py-12'>
+                  <div>
+                    <AiOutlineShoppingCart size={64} />
+                  </div>
+                  <p className='text-xl font-bold mb-2'>There's nothing in here 😕</p>
+                  <p className='underline cursor-pointer' onClick={onCloseCart}>Go and add some stuff!</p>
+                </div>
+              ) : (
+                <ul className="pt-4">
+                  {content.map(({ id, title, price, image, count }) => (
+                    <CartItem
+                      key={id}
+                      id={id}
+                      title={title}
+                      price={price}
+                      image={image}
+                      count={count}
+                      onRemoveItem={onRemoveItem}
+                      onChangeItemCount={onChangeItemCount}
+                    />
+                  ))}
+                </ul>
+              )}
             </div>
 
             <div className="flex p-4 bg-white border-t-2 border-solid border-slate-100 ">
