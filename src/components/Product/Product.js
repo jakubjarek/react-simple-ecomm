@@ -1,9 +1,11 @@
-function Product({ id, title, price, image, onClick }) {
+function Product({ productData, onClick }) {
+  const { title, price, image } = productData;
+
   return (
     <li
       tabIndex={0}
       className="group flex flex-col max-w-sm bg-white cursor-pointer overflow-hidden"
-      onClick={() => onClick({ id, title, price, image })}
+      onClick={() => onClick(productData)}
     >
       <div className="w-full h-72 mb-4">
         <img className="w-full h-full object-cover" src={image} alt="" aria-hidden="true" />

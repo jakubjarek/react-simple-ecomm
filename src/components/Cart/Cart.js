@@ -36,12 +36,14 @@ function Cart({ content, onCloseCart, setCart }) {
           <div>
             <div className="mt-12">
               {content.length === 0 ? (
-                <div className='flex flex-col items-center justify-center py-12'>
+                <div className="flex flex-col items-center justify-center py-12">
                   <div>
                     <AiOutlineShoppingCart size={64} />
                   </div>
-                  <p className='text-xl font-bold mb-2'>There's nothing in here 😕</p>
-                  <p className='underline cursor-pointer' onClick={onCloseCart}>Go and add some stuff!</p>
+                  <p className="text-xl font-bold mb-2">There's nothing in here 😕</p>
+                  <p className="underline cursor-pointer" onClick={onCloseCart}>
+                    Go and add some stuff!
+                  </p>
                 </div>
               ) : (
                 <ul className="pt-4">
