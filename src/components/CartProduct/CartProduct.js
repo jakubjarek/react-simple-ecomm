@@ -1,16 +1,18 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { BsTrash } from 'react-icons/bs';
+import CartContext from '../../context/cart-context';
 
-function CartItem({ id, title, price, image, count, onRemoveItem, onChangeItemCount }) {
-  const [quantity, setQuantity] = useState(count);
+function CartItem({ productData }) {
+  const { title, price, image, count } = productData;
 
-  const onQuantityChange = ({ target: { value } }) => {
-    setQuantity(Number(value));
-    onChangeItemCount(id, Number(value));
+  const { updateProductCount, removeProduct } = useContext(CartContext);
+
+  const handleQuantityChange = (e) => {
+    updateProductCount(productData, Number(e.target.value));
   };
 
   return (
-    <li className="border-b border-solid border-slate-100 py-5  ">
+    <li className="border-b border-solid border-slate-100 py-5">
       <div>
         <div className="flex items-top">
           <div className="relative w-20 h-28 md:w-32  lg:w-40 mr-6 flex-shrink-0">
@@ -27,9 +29,9 @@ function CartItem({ id, title, price, image, count, onRemoveItem, onChangeItemCo
               <div className="flex items-center mb-2">
                 <select
                   className="w-10 mr-4 p-1"
-                  onChange={onQuantityChange}
+                  defaultValue={count}
+                  onChange={handleQuantityChange}
                   title="Change quantity"
-                  defaultValue={quantity}
                 >
                   <option value={1}>1</option>
                   <option value={2}>2</option>
@@ -38,7 +40,7 @@ function CartItem({ id, title, price, image, count, onRemoveItem, onChangeItemCo
                   <option value={5}>5</option>
                 </select>
 
-                <button className="p-1" onClick={() => onRemoveItem(id)}>
+                <button className="p-1" onClick={() => removeProduct(productData)}>
                   <BsTrash
                     className="hover:text-red-500 transition-colors"
                     size={21}
@@ -46,7 +48,7 @@ function CartItem({ id, title, price, image, count, onRemoveItem, onChangeItemCo
                   />
                 </button>
               </div>
-              <p className="font-bold">${(price * quantity).toFixed(2)}</p>
+              <p className="font-bold">${(price * count).toFixed(2)}</p>
             </div>
           </div>
         </div>

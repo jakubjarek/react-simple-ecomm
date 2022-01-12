@@ -1,11 +1,16 @@
-function Product({ productData, onClick }) {
+import { useContext } from 'react';
+import CartContext from '../../context/cart-context';
+
+function Product({ productData }) {
   const { title, price, image } = productData;
+
+  const { addProduct } = useContext(CartContext);
 
   return (
     <li
       tabIndex={0}
       className="group flex flex-col max-w-sm bg-white cursor-pointer overflow-hidden"
-      onClick={() => onClick(productData)}
+      onClick={() => addProduct(productData)}
     >
       <div className="w-full h-72 mb-4">
         <img className="w-full h-full object-cover" src={image} alt="" aria-hidden="true" />

@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { getAllProducts, getAllCategories } from '../../api';
 import CategoryList from '../CategoryList/CategoryList';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import Product from '../Product/Product';
 import Category from '../Category/Category';
 
-function ProductsContainer({ handleAddToCart }) {
-  const [products, setProducts] = useState([]);
+function ProductsContainer() {
+  const products = useRef([]);
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
-      setProducts(await getAllProducts());
+      products.current = await getAllProducts();
       setCategories(await getAllCategories());
       setIsLoading(false);
     };
@@ -20,7 +20,7 @@ function ProductsContainer({ handleAddToCart }) {
     getData();
   }, []);
 
-  const filteredProducts = products.filter(({ category }) =>
+  const filteredProducts = products.current.filter(({ category }) =>
     category.match(new RegExp(categories.join('|')))
   );
 
@@ -40,7 +40,7 @@ function ProductsContainer({ handleAddToCart }) {
           </CategoryList>
           <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 items-top p-4">
             {filteredProducts.map((product) => (
-              <Product key={product.id} productData={product} onClick={handleAddToCart} />
+              <Product key={product.id} productData={product} />
             ))}
           </ul>
         </div>
